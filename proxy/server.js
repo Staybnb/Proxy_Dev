@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/description', (req, res) => {
-  axios.get(`http://localhost:4000${req.url}`)
+  axios.get(`http://52.14.238.117:4000${req.url}`)
     .then((results) => {
       res.send(results.data);
     })
