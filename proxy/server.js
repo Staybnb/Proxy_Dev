@@ -69,7 +69,6 @@ app.get('/search', (req, res) => {
 });
 
 // Add Louis's API endpoints
-
 app.get('/bookinglisting/:id', (req, res) => {
 
   let id = req.params.id
@@ -78,7 +77,6 @@ app.get('/bookinglisting/:id', (req, res) => {
   .then((results) => res.send(results.data))
   .catch((err) => console.error(err));
 })
-
 
 // Add DAVID's API endpoints
 app.get('/listingdata', (req, res) => {
@@ -108,6 +106,12 @@ app.get('/landmarkdata', (req, res) => {
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
+
+app.get('/listing', (req, res)=>{
+  res.sendFile(path.join(__dirname + '/public/index.html'))
+});
+
+
 
 
 
