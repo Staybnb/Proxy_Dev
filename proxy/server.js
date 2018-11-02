@@ -68,16 +68,6 @@ app.get('/search', (req, res) => {
     });
 });
 
-// Add Louis's API endpoints
-app.get('/bookinglisting/:id', (req, res) => {
-
-  let id = req.params.id
-
-  axios.get(`http://18.216.104.91/bookinglisting/${id}`)
-  .then((results) => res.send(results.data))
-  .catch((err) => console.error(err));
-})
-
 // Add DAVID's API endpoints
 app.get('/listingdata', (req, res) => {
   let requestId = req.query.id;
@@ -103,6 +93,20 @@ app.get('/landmarkdata', (req, res) => {
   .catch((err) => console.error(err));
 })
 
+// Add Louis's API endpoints
+app.get('/bookinglisting/:id', (req, res)=>{ 
+  let id = req.params.id
+  axios.get(`http://18.216.104.91/bookinglisting/${id}`)
+  .then((results) => {
+    res.send(results.data)
+  })
+  .catch((err) => {
+    console.error(err)
+  });
+})
+
+
+
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
@@ -110,10 +114,6 @@ app.get("/*", (req, res) => {
 app.get('/listing', (req, res)=>{
   res.sendFile(path.join(__dirname + '/public/index.html'))
 });
-
-
-
-
 
 app.listen(port, function() {
   console.log(`server running at: http://localhost:${port}`);
